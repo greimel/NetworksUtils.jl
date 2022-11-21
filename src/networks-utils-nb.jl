@@ -348,7 +348,7 @@ function numbered_graphplot!(ax, g;
 	minimal=true, extend_limits=automatic,
 	edge_width = 2 .* weight.(edges(g)) ./ maximum(sum(weights(g), dims=1)),
 	nlabels = vertices(g),
-	layout = Spring(), 
+	layout = componentwise_circle, 
 	node_color = (:lightgray, 1), 
 	node_attr = (;), 
 	node_markersize = automatic, 
@@ -411,7 +411,6 @@ end
 # ╔═╡ 0415edd1-dd4b-4404-8048-b8469633f056
 numbered_graphplot(SimpleWeightedDiGraph(nw.Y),
 	extend_limits = 0.1,
-	layout = componentwise_circle,
 	figure = figure(220)
 )
 

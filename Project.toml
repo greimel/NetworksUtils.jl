@@ -1,7 +1,7 @@
 name = "NetworksUtils"
 uuid = "4943429a-ba68-4c19-ade3-7332adbb3997"
 authors = ["Fabian Greimel <fabgrei@gmail.com>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 GraphMakie = "1ecd5474-83a3-4783-bb4f-06765db800d2"

@@ -14,7 +14,7 @@ using Makie
 using SimpleWeightedGraphs#: SimpleWeightedDiGraph, SimpleWeightedGraph
 
 # ╔═╡ 880ad3e2-fe87-4658-b2c7-87b294ab5732
-using Graphs: AbstractGraph, edges, vertices, ne, nv, weights, is_directed, connected_components
+using Graphs: Graphs, AbstractGraph, edges, vertices, ne, nv, weights, is_directed, connected_components, adjacency_matrix
 
 # ╔═╡ c8ca6c1b-b968-4412-817c-42f1f5ea1e57
 using Statistics: mean
@@ -72,7 +72,7 @@ updated_network(interbank_market) = interbank_market.payments
 abstract type FinancialNetwork end
 
 # ╔═╡ 761cd084-9134-4feb-9665-d65adb9506d7
-adjacency_matrix(network::FinancialNetwork) = network.Y
+Graphs.adjacency_matrix(network::FinancialNetwork) = network.Y
 
 # ╔═╡ 2ec832c9-43b5-430e-9c7f-cf8073afd103
 struct InterbankMarket{FN <: FinancialNetwork}
@@ -85,15 +85,6 @@ end
 
 # ╔═╡ ce0c25dc-5b42-49c9-b146-fe7432c65abf
 initial_network(interbank_market) = adjacency_matrix(interbank_market.network)
-
-# ╔═╡ b5a50e8d-6c31-4c86-82ad-243176494e58
-begin
-	payables(IM::InterbankMarket) = sum(initial_network(IM), dims = 2)
-	receivables(IM::InterbankMarket) = sum(initial_network(IM), dims = 1)
-	
-	paid(IM::InterbankMarket) = sum(updated_network(IM), dims = 2)
-	received(IM::InterbankMarket) = sum(updated_network(IM), dims = 1)
-end
 
 # ╔═╡ 51f6961d-f455-4d4f-a548-501200d29a37
 function complete_network(n, ȳ)
@@ -1745,7 +1736,6 @@ version = "3.5.0+0"
 # ╠═2ec832c9-43b5-430e-9c7f-cf8073afd103
 # ╠═ce0c25dc-5b42-49c9-b146-fe7432c65abf
 # ╠═d2f4aaea-d656-4ace-890d-b70d0e1592ec
-# ╠═b5a50e8d-6c31-4c86-82ad-243176494e58
 # ╠═761cd084-9134-4feb-9665-d65adb9506d7
 # ╠═1dc5cee3-a409-466a-8849-f3b148c9de1c
 # ╠═debdc4e6-47a5-4a83-a95c-56d44be708c2

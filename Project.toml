@@ -1,7 +1,7 @@
 name = "NetworksUtils"
 uuid = "4943429a-ba68-4c19-ade3-7332adbb3997"
 authors = ["Fabian Greimel <fabgrei@gmail.com>"]
-version = "0.1.4"
+version = "0.1.5"
 
 [deps]
 GraphMakie = "1ecd5474-83a3-4783-bb4f-06765db800d2"
@@ -14,4 +14,6 @@ SimpleWeightedGraphs = "47aef6b3-ad0c-573a-a1e2-d07658019622"
 Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
 
 [compat]
+GraphMakie = "0.5"
+Graphs = "1.7"
 Makie = "0.19"

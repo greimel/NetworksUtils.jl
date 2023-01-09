@@ -1,5 +1,5 @@
 ### A Pluto.jl notebook ###
-# v0.19.16
+# v0.19.19
 
 using Markdown
 using InteractiveUtils
@@ -384,7 +384,7 @@ function numbered_graphplot!(ax, g;
 	
 	graphplot!(ax, g; node_attr, arrow_attr, layout, edge_width, kwargs...)
 	
-	text!(ax, string.(nlabels); position=layout(g), font = node_font, fontsize = node_fontsize, align = (:center, :center))
+	text!(ax, layout(g); text=string.(nlabels), font = node_font, fontsize = node_fontsize, align = (:center, :center))
 end
 
 # ╔═╡ dc6514b2-2687-43f7-8c7b-e3811cdebf91
@@ -403,6 +403,7 @@ end
 
 # ╔═╡ 0415edd1-dd4b-4404-8048-b8469633f056
 numbered_graphplot(SimpleWeightedDiGraph(nw.Y),
+	nlabels = [L"A", "B", 3],
 	extend_limits = 0.1,
 	figure = figure(220)
 )
@@ -488,9 +489,9 @@ SimpleWeightedGraphs = "~1.2.1"
 PLUTO_MANIFEST_TOML_CONTENTS = """
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.8.3"
+julia_version = "1.8.4"
 manifest_format = "2.0"
-project_hash = "bc5895c945429d5035afdcaf6b94d8c81e4e7ed0"
+project_hash = "1f4eabd88a5845165cea930564cf8690f4f1fb27"
 
 [[deps.AbstractFFTs]]
 deps = ["ChainRulesCore", "LinearAlgebra"]
@@ -579,7 +580,7 @@ uuid = "13f3f980-e62b-5c42-98c6-ff1f3baf88f0"
 version = "0.10.0"
 
 [[deps.Cairo_jll]]
-deps = ["Artifacts", "Bzip2_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "JLLWrappers", "LZO_jll", "Libdl", "Pixman_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libXrender_jll", "Zlib_jll", "libpng_jll"]
+deps = ["Artifacts", "Bzip2_jll", "CompilerSupportLibraries_jll", "Fontconfig_jll", "FreeType2_jll", "Glib_jll", "JLLWrappers", "LZO_jll", "Libdl", "Pixman_jll", "Pkg", "Xorg_libXext_jll", "Xorg_libXrender_jll", "Zlib_jll", "libpng_jll"]
 git-tree-sha1 = "4b859a208b2397a7a623a03449e4636bdb17bcf2"
 uuid = "83423d85-b0ee-5818-9007-b63ccbeb887a"
 version = "1.16.1+1"
@@ -641,7 +642,7 @@ version = "4.5.0"
 [[deps.CompilerSupportLibraries_jll]]
 deps = ["Artifacts", "Libdl"]
 uuid = "e66e0078-7015-5450-92f7-15fbd957f2ae"
-version = "0.5.2+0"
+version = "1.0.1+0"
 
 [[deps.ConstructionBase]]
 deps = ["LinearAlgebra"]
